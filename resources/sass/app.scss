@@ -1,14 +1,14 @@
 // Variables
-@import 'variables';
+//@import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 // Fontawesome
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~@fortawesome/fontawesome-free/scss/brands';
+//@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+//@import '~@fortawesome/fontawesome-free/scss/regular';
+//@import '~@fortawesome/fontawesome-free/scss/solid';
+//@import '~@fortawesome/fontawesome-free/scss/brands';
 
 
 /* universal */
@@ -36,9 +36,45 @@ html {
   min-height: 100%;
 }
 
+a {
+  text-decoration: none;
+};
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+}
+
+.root-page {
+
+  .contain {
+    margin-bottom: 40px;
+  }
+
+  .caption {
+    padding: 10px;
+
+    h3{
+      margin: 0px;
+      font-size: 14px;
+      line-height: 15px;
+    }
+  }
+  .caption-t{
+    font-size: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 30px;
+    margin-bottom: 40px;
+
+    .c-left{
+      width: 50%;
+    }
+
+    .c-right{
+      width: 50%;
+      text-align:right;
+    }
+  }
 }
 
 .footer {
