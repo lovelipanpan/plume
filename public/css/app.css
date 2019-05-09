@@ -10697,21 +10697,21 @@ body {
   margin-bottom: 60px;
 }
 
-.root-page .contain {
+.home-page .contain {
   margin-bottom: 40px;
 }
 
-.root-page .caption {
+.home-page .caption {
   padding: 10px;
 }
 
-.root-page .caption h3 {
+.home-page .caption h3 {
   margin: 0px;
   font-size: 14px;
   line-height: 15px;
 }
 
-.root-page .caption-t {
+.home-page .caption-t {
   font-size: 14px;
   padding-left: 15px;
   padding-right: 15px;
@@ -10719,11 +10719,11 @@ body {
   margin-bottom: 40px;
 }
 
-.root-page .caption-t .c-left {
+.home-page .caption-t .c-left {
   width: 50%;
 }
 
-.root-page .caption-t .c-right {
+.home-page .caption-t .c-right {
   width: 50%;
   text-align: right;
 }
