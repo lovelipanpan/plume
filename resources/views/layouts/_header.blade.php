@@ -14,9 +14,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active"><a class="nav-link" href="">主页</a></li>
-        <li class="nav-item"><a class="nav-link" href="">日记</a></li>
-        <li class="nav-item"><a class="nav-link" href="">作品</a></li>
+        <li class="nav-item {{ active_class(if_route('topics.index')) }}"><a class="nav-link" href="{{ route('topics.index') }}">话题</a></li>
+        <li class="nav-item"><a class="nav-item {{ category_nav_active(1) }}"><a class="nav-link" href="{{ route('categories.show', 1) }}">私人日记</a></li>
+        <li class="nav-item"><a class="nav-item {{ category_nav_active(1) }}"><a class="nav-link" href="{{ route('categories.show', 2) }}">技术作品</a></li>
+        <li class="nav-item"><a class="nav-item {{ category_nav_active(1) }}"><a class="nav-link" href="{{ route('categories.show', 3) }}">心情随笔</a></li>
+        <li class="nav-item"><a class="nav-item {{ category_nav_active(1) }}"><a class="nav-link" href="{{ route('categories.show', 4) }}">留言板</a></li>
+        <li class="nav-item"><a class="nav-item {{ category_nav_active(1) }}"><a class="nav-link" href="{{ route('categories.show', 4) }}">关于我</a></li>
       </ul>
 
       <!-- Right Side Of Navbar -->
