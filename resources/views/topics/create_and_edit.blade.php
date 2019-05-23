@@ -43,7 +43,7 @@
               </div>
 
               <div class="form-group">
-                <textarea name="body" class="form-control" id="editor" rows="6" placeholder="请填入至少三个字符的内容。" required>{{ old('body', $topic->body ) }}</textarea>
+                <textarea name="body" class="form-control" id="editor" rows="6" placeholder="请填入至少三个字符的内容。">{{ old('body', $topic->body ) }}</textarea>
               </div>
 
               <div class="well well-sm">
@@ -67,42 +67,54 @@
   <script type="text/javascript" src="{{ asset('js/codemirror-4.inline-attachment.js') }}"></script>
 
   <script>
+
     $(document).ready(function() {
+    $("#editor").bind({
+        copy : function(){
+          alert(1)
+        },
+        paste : function(){
+          alert(2)
+        },
+        cut : function(){
+          alet(3)
+        }
+    });
       var simplemde = new SimpleMDE({
         textarea: $('#editor'),
-        // upload: {
-        //   url: '{{ route('topics.upload_image') }}',
-        //   params: {
-        //     _token: '{{ csrf_token() }}'
-        //   },
-        //   fileKey: 'upload_file',
-        //   connectionCount: 3,
-        //   leaveConfirm: '文件上传中，关闭此页面将取消上传。'
-        // },
-        pasteImage: true,
+        autofocus: true,
+        autosave: {
+            enabled: true,
+            uniqueId: "#editor",
+            delay: 1000,
+        },
+        promptURLs: true,
       });
 
-
       // 在已有的 simplemde 对象的基础上再增加图片拖拽
-      inlineAttachment.editors.codemirror4.attach(simplemde.codemirror, {
-          // // 传递 CSRF token
-          extraParams: {
-              '_token': "{{ csrf_token() }}",
-          },
-          uploadFieldName: 'upload_file',
-          // // 设置图片上传的地址
-          uploadUrl: '{{ route('topics.upload_image') }}',
+      inlineAttachment.editors.codemirror4.attach(simplemde.codemirror ,{
+        extraParams: {
+            '_token': "{{ csrf_token() }}",
+        },
+        uploadFieldName: 'upload_file',
+        uploadUrl: '{{ route('topics.upload_image') }}',
+        onFileUploadResponse: function(xhr) {
+          var result = JSON.parse(xhr.responseText),
+          filename = result['file_path'];
 
-          // // 上传之后的处理
-          onFileUploadResponse: function(xhr) {
-
-              var result = JSON.parse(xhr.responseText),
-              filename = result[this.settings.jsonFieldName];
-              if (result && result.success == true) {
-                  this.editor.setValue(result.file_path);
+          if (result && filename) {
+              var newValue;
+              if (typeof this.settings.urlText === 'function') {
+                  newValue = this.settings.urlText.call(this, filename, result);
+              } else {
+                  newValue = this.settings.urlText.replace(this.filenameTag, filename);
               }
-              return false;
+              var text = this.editor.getValue().replace(this.lastValue, newValue);
+              this.editor.setValue(text);
+              this.settings.onFileUploaded.call(this, filename);
           }
+          return false;
+        }
       });
 
     });

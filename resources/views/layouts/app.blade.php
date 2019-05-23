@@ -9,7 +9,8 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title', 'plume') - see you again</title>
+  <title>@yield('title', 'plume') - let me fly</title>
+  <meta name="description" content="@yield('description', 'Welcome to plume`s person blog')" />
 
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
