@@ -56,3 +56,59 @@
   </div>
 
 @endsection
+
+@section('styles')
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/simplemde.min.css') }}">
+@stop
+
+@section('scripts')
+  <script type="text/javascript" src="{{ asset('js/simplemde.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/inline-attachment.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/codemirror-4.inline-attachment.js') }}"></script>
+
+  <script>
+    $(document).ready(function() {
+      var simplemde = new SimpleMDE({
+        textarea: $('#editor'),
+        // upload: {
+        //   url: '{{ route('topics.upload_image') }}',
+        //   params: {
+        //     _token: '{{ csrf_token() }}'
+        //   },
+        //   fileKey: 'upload_file',
+        //   connectionCount: 3,
+        //   leaveConfirm: '文件上传中，关闭此页面将取消上传。'
+        // },
+        pasteImage: true,
+      });
+
+
+      // 在已有的 simplemde 对象的基础上再增加图片拖拽
+      inlineAttachment.editors.codemirror4.attach(simplemde.codemirror, {
+          // // 传递 CSRF token
+          extraParams: {
+              '_token': "{{ csrf_token() }}",
+          },
+          uploadFieldName: 'upload_file',
+          // // 设置图片上传的地址
+          uploadUrl: '{{ route('topics.upload_image') }}',
+
+          // // 上传之后的处理
+          onFileUploadResponse: function(xhr) {
+
+              var result = JSON.parse(xhr.responseText),
+              filename = result[this.settings.jsonFieldName];
+
+              console.log(result)
+
+              if (result && result.success == true) {
+                  this.editor.setValue(result.file_path);
+                  // this.settings.onFileUploaded.call(this, '文件上传中...');
+              }
+              return false;
+          }
+      });
+
+    });
+  </script>
+@stop
