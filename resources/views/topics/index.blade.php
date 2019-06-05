@@ -27,6 +27,15 @@
           </li>
         </ul>
       </div>
+
+      <div class="card-body">
+        {{-- 话题列表 --}}
+        @include('topics._topic_list', ['topics' => $topics])
+        {{-- 分页 --}}
+        <div class="mt-5">
+          {!! $topics->appends(Request::except('page'))->render() !!}
+        </div>
+      </div>
     </div>
   </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Topic;
 use App\Models\Category;
+use App\Models\User;
 
 class CategoriesController extends Controller
 {
@@ -15,7 +16,7 @@ class CategoriesController extends Controller
                         ->where('category_id', $category->id)
                         ->paginate(20);
 
-        // 传参变量话题和分类到模板中
+       // 传参变量话题和分类到模板中
         return view('topics.index', compact('topics', 'category'));
     }
 }
