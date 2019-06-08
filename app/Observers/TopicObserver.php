@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Topic;
 use App\Jobs\TranslateSlug;
+use Parsedown;
 
 // creating, created, updating, updated, saving,
 // saved,  deleting, deleted, restoring, restored
@@ -12,8 +13,11 @@ class TopicObserver
 {
     public function saving(Topic $topic)
     {
+        // markdown 转 html
+        $body = Parsedown::instance()->text($topic->body);
+
         // XSS 过滤
-        $topic->body = clean($topic->body, 'user_topic_body');
+        $topic->body = clean($body, 'user_topic_body');
 
         // 生成话题摘录
         $topic->excerpt = make_excerpt($topic->body);
