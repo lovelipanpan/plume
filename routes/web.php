@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'TopicsController@index')->name('home');
 
 Auth::routes(['verify' => true]);
 
