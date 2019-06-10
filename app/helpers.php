@@ -9,6 +9,7 @@ function get_db_config()
 {
     if (getenv('IS_IN_HEROKU')) {
         $url = parse_url(getenv("DATABASE_URL"));
+        $redis_url = parse_url(getenv("REDIS_URL"));
 
         return $db_config = [
             'connection' => 'pgsql',
@@ -16,6 +17,10 @@ function get_db_config()
             'database'  => substr($url["path"], 1),
             'username'  => $url["user"],
             'password'  => $url["pass"],
+            'redis_host' => $redis_url["host"],
+            'redis_password' => $redis_url["pass"],
+            'redis_port' => $redis_url["port"],
+            'redis_database' => 0,
         ];
     } else {
         return $db_config = [
@@ -24,9 +29,14 @@ function get_db_config()
             'database'  => env('DB_DATABASE', 'forge'),
             'username'  => env('DB_USERNAME', 'forge'),
             'password'  => env('DB_PASSWORD', ''),
+            'redis_host' => env('REDIS_HOST', '127.0.0.1'),
+            'redis_password' => env('REDIS_PASSWORD', null),
+            'redis_port' => env('REDIS_PORT', 6379),
+            'redis_database' => env('REDIS_DB', 0),
         ];
     }
 }
+
 
 function category_nav_active($category_id)
 {
