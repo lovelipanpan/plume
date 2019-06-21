@@ -61,7 +61,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\EnsureEmailIsVerified::class,
 
             // 记录用户最后活跃时间
-            // \App\Http\Middleware\RecordLastActivedTime::class,
+            \App\Http\Middleware\RecordLastActivedTime::class,
         ],
 
         // API 中间件组，应用于 routes/api.php 路由文件，
