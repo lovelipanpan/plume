@@ -7,14 +7,23 @@ use App\Models\Topic;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Link;
+use Auth;
 
 class CategoriesController extends Controller
 {
+
     public function show(Category $category, Request $request, Topic $topic, User $user, Link $link)
     {
+        $this->authorize('show', $category);
         // 读取分类 ID 关联的话题，并按每 20 条分页
+
+        $where['category_id'] = $category->id;
+        if($category->id == 1){
+            $where['user_id'] = Auth::user()->id;
+        }
+
         $topics = $topic->withOrder($request->order)
-                        ->where('category_id', $category->id)
+                        ->where($where)
                         ->paginate(20);
         // 活跃用户列表
         $active_users = $user->getActiveUsers();

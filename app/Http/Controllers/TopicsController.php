@@ -21,7 +21,7 @@ class TopicsController extends Controller
 
     public function index(Request $request, Topic $topic, User $user, Link $link)
     {
-        $topics = $topic->withOrder($request->order)->paginate(20);
+        $topics = $topic->withOrder($request->order)->where('category_id', '!=', 1)->paginate(20);
         $active_users = $user->getActiveUsers();
         $links = $link->getAllCached();
 
@@ -30,6 +30,7 @@ class TopicsController extends Controller
 
     public function show(Topic $topic)
     {
+        $this->authorize('show', $topic);
         return view('topics.show', compact('topic'));
     }
 

@@ -16,4 +16,11 @@ class TopicPolicy extends Policy
     {
         return $user->isAuthorOf($topic);
     }
+
+    public function show(User $user, $currentTopic)
+    {
+        if($currentTopic->category_id =! 1 || $currentTopic->user_id == $user->id){
+            return true;
+        }
+    }
 }
