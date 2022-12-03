@@ -566,7 +566,7 @@
 
 "@fortawesome/fontawesome-free@^5.8.1":
   version "5.8.1"
-  resolved "http://r.cnpmjs.org/@fortawesome/fontawesome-free/download/@fortawesome/fontawesome-free-5.8.1.tgz#cbafbfe8894c4e3e3c3a9da6774e249ac1f2da8b"
+  resolved "https://r.cnpmjs.org/@fortawesome/fontawesome-free/download/@fortawesome/fontawesome-free-5.8.1.tgz#cbafbfe8894c4e3e3c3a9da6774e249ac1f2da8b"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -1782,7 +1782,7 @@ date-now@^0.1.4:
 
 de-indent@^1.0.2:
   version "1.0.2"
-  resolved "http://r.cnpmjs.org/de-indent/download/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
+  resolved "https://r.cnpmjs.org/de-indent/download/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"
@@ -1807,8 +1807,8 @@ decamelize@^1.2.0:
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
 decode-uri-component@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz#e69dbe25d37941171dd540e024c444cd5188e1e9"
 
 deep-equal@^1.0.1:
   version "1.0.1"
@@ -5444,7 +5444,7 @@ vue-style-loader@^4.1.0:
 
 vue-template-compiler@^2.6.10:
   version "2.6.10"
-  resolved "http://r.cnpmjs.org/vue-template-compiler/download/vue-template-compiler-2.6.10.tgz#323b4f3495f04faa3503337a82f5d6507799c9cc"
+  resolved "https://r.cnpmjs.org/vue-template-compiler/download/vue-template-compiler-2.6.10.tgz#323b4f3495f04faa3503337a82f5d6507799c9cc"
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
